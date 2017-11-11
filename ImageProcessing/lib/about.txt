@@ -1,0 +1,3 @@
+This directory is a library directory.
+A directory that gathers the external libraries, or custom libraries
+or headers that are needed when we configure filters or create a GUI.
