@@ -6,7 +6,7 @@ using namespace cv;
 int main()
 {
    Mat ori_img, gray_img;
-   ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+   ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
    cvtColor(ori_img, gray_img, COLOR_BGR2GRAY);
    imshow("Original Image", ori_img);
    imshow("Grayscale Image", gray_img);
