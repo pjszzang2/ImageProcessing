@@ -2,31 +2,56 @@
 #include <opencv2/imgproc.hpp>
 
 using namespace cv;
+void rotateImage(Mat &input, Mat &output, int degree);
 
 int main()
 {
-   Mat ori_img, rot_img;
-   ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
-   
-  int height = ori_img.rows;
-  int width = ori_img.cols;
+	Mat ori_img;
+	ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
 
-  int imgcstate = (ori_img.channels()==1) ? CV_8UC1 : CV_8UC3;
+	int height = ori_img.rows;
+	int width = ori_img.cols;
 
-  rot_img(height,width,imgcstate,Scalar(0)); //default
+	int imgcstate = (ori_img.channels()==1) ? CV_8UC1 : CV_8UC3;
 
-  int degree = 90; //Rotate degree set
-  rotateImage(ori_img,rot_img,degree); //Rotate method
+	Mat rot_img(height,width,imgcstate,Scalar(0,0,0)); //default
 
-  imshow("Output image", rot_img);
-  waitKey(0);
-  destoryAllwindows();
+	int degree = 90; //Rotate degree set
+	rotateImage(ori_img,rot_img,degree); //Rotate method
 
-  return 0;
+	imshow("Output image", rot_img);
+	waitKey(0);
+//	destoryAllwindows();
+
+	return 0;
 
 }
 
 void rotateImage(Mat &input, Mat &output, int degree){
 
 	//execute the rotate
+	double height = output.rows;
+	double width = output.cols;
+
+	int cx = width/2;
+	int cy = height/2;
+	double setha = -degree * 3.14 / 180.0; 
+
+	for(int y=0;y<height;y++){
+		for(int x=0;x<width;x++){
+
+			int newx = (x-cx)*cos(setha)+(y-cy)*sin(setha)+cx;
+			int newy = (x-cx)*sin(setha)+(y-cy)*cos(setha)+cy;
+
+			if(input.channels() == 3){
+				if(newx < 0.0 || (newx >= width) || (newy<0.0 || (newy >= height))){
+					output.at<Vec3b>(y,x)=0;
+				}
+				else{
+					Vec3b val = input.at<Vec3b>(newy,newx);
+					output.at<Vec3b>(y,x) = val;
+				}
+			}
+		}
+	}
 }
