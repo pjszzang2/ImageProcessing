@@ -21,7 +21,6 @@ int main()
 
 	imshow("Output image", rot_img);
 	waitKey(0);
-//	destoryAllwindows();
 
 	return 0;
 
