@@ -1,13 +1,12 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-
 using namespace cv;
 void rotateImage(Mat &input, Mat &output, int degree);
 
 int main()
 {
 	Mat ori_img;
-	ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+	ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
 
 	int height = ori_img.rows;
 	int width = ori_img.cols;
@@ -17,6 +16,10 @@ int main()
 	Mat rot_img(height,width,imgcstate,Scalar(0,0,0)); //default
 
 	int degree = 90; //Rotate degree set
+
+        printf("90 180 270 : ");
+        scanf("%d", &degree);
+
 	rotateImage(ori_img,rot_img,degree); //Rotate method
 
 	imshow("Output image", rot_img);
