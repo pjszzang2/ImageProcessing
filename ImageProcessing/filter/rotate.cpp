@@ -57,7 +57,7 @@ void rotateImage(Mat &input, Mat &output, int degree){
                         }
 			
 			//RGB IMAGE
-			if(input.channels() == 3){
+			else if(input.channels() == 3){
 				if(newx < 0.0 || (newx >= width) || (newy<0.0 || (newy >= height))){
 					output.at<Vec3b>(y,x)=0;
 				}
