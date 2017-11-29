@@ -45,6 +45,18 @@ void rotateImage(Mat &input, Mat &output, int degree){
 			int newx = (x-cx)*cos(setha)+(y-cy)*sin(setha)+cx;
 			int newy = (x-cx)*sin(setha)+(y-cy)*cos(setha)+cy;
 
+			//grayimage
+                        if(input.channels()== 1 ){
+                                if((newx < 0.0) || (newx >= width) || (newy < 0.0) || (newy >= height)){
+                                        output.at<uchar>(y,x) = 0;
+                                }
+                                else{
+                                        uchar data = input.at<uchar>(newy,newx);
+                                        output.at<uchar>(y,x)=data;
+                                }
+                        }
+			
+			//RGB IMAGE
 			if(input.channels() == 3){
 				if(newx < 0.0 || (newx >= width) || (newy<0.0 || (newy >= height))){
 					output.at<Vec3b>(y,x)=0;
