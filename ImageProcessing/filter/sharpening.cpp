@@ -6,10 +6,11 @@ int main() {
 	IplImage *srcImage = cvLoadImage("/home/jaeseok/ImageProcessing/img/atj.jpg", -1);
 	IplImage *rstImage1 = cvCreateImage(cvGetSize(srcImage), IPL_DEPTH_8U, 3);
 
+	//샤프닝 필터의 모든 계수의 합은 1이된다
 	double mask1[3][3] = { 
-		{1, -2, 1}, 
-		{ -2, 5, -2 }, 
-		{ 1, -2, 1 } };
+		{0, -1, 0}, 
+		{ -1, 5, -1 }, 
+		{ 0, -1, 0 } };
 
 
 	CvMat kernel1 = cvMat(3, 3, CV_64FC1, mask1);
