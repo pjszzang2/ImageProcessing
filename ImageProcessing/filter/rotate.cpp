@@ -6,7 +6,11 @@ void rotateImage(Mat &input, Mat &output, int degree);
 int main()
 {
 	Mat ori_img;
-	ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+	ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+
+	if(ori_img.empty()){
+		return -1;
+	}
 
 	int height = ori_img.rows;
 	int width = ori_img.cols;
