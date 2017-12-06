@@ -1,15 +1,16 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include<iostream>
 
 using namespace cv;
-
-int main()
+using namespace std;
+void grayscale(Mat ori_img)
 {
-   Mat ori_img, gray_img;
-   ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+   Mat gray_img;
+//   ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
    cvtColor(ori_img, gray_img, COLOR_BGR2GRAY);
-   imshow("Original Image", ori_img);
+//   imshow("Original Image", ori_img);
    imshow("Grayscale Image", gray_img);
    while(cvWaitKey(0)==0);
-return 0;
+//return 0;
 }

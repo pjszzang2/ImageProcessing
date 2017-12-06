@@ -1,17 +1,14 @@
-#include "opencv2/highgui/highgui.hpp"
-#include <iostream>
- 
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include<iostream>
+
 using namespace cv;
 using namespace std;
- 
-int main( int argc, const char** argv )
+
+void brightness(Mat ori_img)
 {
-	Mat ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", CV_LOAD_IMAGE_COLOR);
- 
-	if (ori_img.empty())
-	{
-        	return -1;
-	}
+//	Mat ori_img = imread("/home/jaeseok/ImageProcessing/img/atj.jpg", CV_LOAD_IMAGE_COLOR);
+
  
 	Mat imgH = ori_img + Scalar(50, 50, 50); 
 	
@@ -30,5 +27,5 @@ int main( int argc, const char** argv )
  
 	destroyAllWindows();
 
-	return 0;
+//	return 0;
 }
