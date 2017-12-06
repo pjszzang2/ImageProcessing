@@ -1,7 +1,0 @@
-g++ -o pmanager -I./ pmanager.cpp `pkg-config opencv --cflags --libs`
-
-
-ar rv libfilter.a ../filter/grayscale.o ../filter/brightness.o ../filter/sharpening2.o ../filter/sobel.o ../filter/rotate.o
-
-
-g++ -I../lib pmanager.cpp -L../lib -lfilter -o pmanager `pkg-config opencv --cflags --libs`

@@ -1,0 +1,7 @@
+
+
+Step2:   ar rv libfilter.a ../filter/grayscale.o ../filter/brightness.o ../filter/sharpening.o ../filter/sobel.o ../filter/rotate.o
+
+
+Step3:   g++ -I../lib pmanager.cpp -L./ -lfilter -o Image_Processig `pkg-config opencv --cflags --libs`
+
