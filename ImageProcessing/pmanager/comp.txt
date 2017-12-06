@@ -1,0 +1,2 @@
+g++ -o pmanager -I./ pmanager.cpp `pkg-config opencv --cflags --libs`
+

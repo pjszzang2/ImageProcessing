@@ -38,9 +38,9 @@ public:
       cout <<"Enter the Rotate Degree : ";
       cin >> rd;
    }
-   void Grayscale(Mat ori_img){
+   void Grayscale(Mat param_img){
       cout<<"[ Grayscale ]"<<endl;
-      grayscale(ori_img);
+      grayscale(param_img);
    }
 };
 
