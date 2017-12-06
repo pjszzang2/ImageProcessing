@@ -1,7 +1,5 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-#include <iostream>
-
 using namespace cv;
 using namespace std;
 
@@ -11,8 +9,8 @@ void rotate(Mat ori_img)
         int width = ori_img.cols;
 	int cx = width/2;
         int cy = height/2;
-      	int imgcstate = (ori_img.channels()==1) ? CV_8UC1 : CV_8UC3;
         int degree = 90;
+	int imgcstate = (ori_img.channels()==1) ? CV_8UC1 : CV_8UC3;
 
 	Mat rot_img(height,width,imgcstate,Scalar(0,0,0));
 
@@ -20,8 +18,8 @@ void rotate(Mat ori_img)
         double out_width = rot_img.cols;
 
         int rd;
-	cin>>rd;
-	degree=rd*90;
+        cin >> rd;
+        degree=ern*90;
 
 	double setha = -degree * 3.14 /180;
 
@@ -55,5 +53,6 @@ void rotate(Mat ori_img)
                 }
         }
 	imshow("Output image", rot_img);
+	waitKey(0);
 }
 

@@ -14,31 +14,35 @@ using namespace cv;
 class PManager{
 private:
    int fnum;
-   int rd;
    Mat ori_img;
+
 public:
    PManager(){}
+
    void Run(){
-      ori_img = imread("/home/doo/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+      ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
       imshow("Original Image", ori_img);
    }
+
    int Get_Fnum(){return fnum;}
    void Set_Fnum(int fn){fnum=fn;}
+
    void Op_Input(){
       cout << endl << endl << endl << "<< Choose a filter you want. >>"<< endl;
       cout <<"0.Program Termination   1.Rotate   2.Grayscale   3.blah blah ..." <<endl<<endl;
       cin >> fnum;
       switch(fnum){
-         case 1: Rotate(); break;
+         case 1: Rotate(ori_img); break;
          case 2: Grayscale(ori_img); break;
          case 3: cout<<"Blah Blah"<<endl; break;
          default : break;
       }
    }
-   void Rotate(){
+   void Rotate(Mat param_img){
+      int ern;
       cout<<"[ Rotate ]"<<endl;
-      cout <<"Enter the Rotate Degree : ";
-      cin >> rd;
+      cout <<"Rotate Degree : 1. 90   2. 180   3. 270";
+      rotate(param_img);
    }
    void Grayscale(Mat param_img){
       cout<<"[ Grayscale ]"<<endl;
@@ -47,11 +51,8 @@ public:
 };
 
 
-int main(){
-//   Mat ori_img;
-  // ori_img = imread("/home/doo/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
-
-  // imshow("Original Image", ori_img);
+int main()
+{
    PManager PM;
    int termin=1;
 
@@ -62,6 +63,8 @@ int main(){
       PM.Op_Input();
       termin=PM.Get_Fnum();
    }
+
+   PM.Run();
 
 return 0;
 }
