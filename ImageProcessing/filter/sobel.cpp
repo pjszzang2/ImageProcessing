@@ -7,10 +7,9 @@
 using namespace cv;
 using namespace std;
 
-int main(){
+void sobel(Mat ori_img){
 
-   Mat ori_img;
-   ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", CV_LOAD_IMAGE_COLOR);
+  
    Mat gray;
    cvtColor(ori_img, gray, CV_BGR2GRAY);
 
@@ -23,6 +22,4 @@ int main(){
 
    imshow("Sobel", sobel);
    waitKey(0);
-
-return 0;
 }
