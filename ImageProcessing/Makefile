@@ -4,10 +4,10 @@ DIRS = filter pmanager
 all:
 	@for d in $(DIRS); \
 	do \
-		$(MAKE) -C $$d; done
+		cd $$d; make; cd ..; done
 
 clean:
 	@for d in $(DIRS); \
 	do \
-		$(MAKE) -C $$d clean; done
+		cd $$d; make clean; cd ..;done
 

@@ -21,7 +21,7 @@ public:
    PManager(){}
 
    void Run(){
-      ori_img = imread("/home/doo/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
+      ori_img = imread("/home/jaeseok/jsp/ImageProcessing/ImageProcessing/img/atj.jpg", IMREAD_COLOR);
       }
 
    int Get_Fnum(){return fnum;}
