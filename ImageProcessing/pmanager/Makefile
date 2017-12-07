@@ -1,18 +1,18 @@
-.SUFFIXES:.o .c
-CC = gcc
+.SUFFIXES:.o .cpp
+CC = g++
 CFLAGS = -g -Wall
-OUTPUT = pmanager
+OUTPUT = Image_Processing
 OBJFILE = pmanager.o
-MYLIB = -L../filter
+MYLIB = -L../lib
 HEAD = -I../lib
+LIB = `pkg-config opencv --cflags --libs`
+INPUT = pmanager.cpp
+
 .PHONEY:clean
 
-$(OUTPUT):$(OBJFILE)
-	$(CC) -o $(OUTPUT) $(MYLIB) -lfilter $(OBJFILE)
-
-.c.o:
-	$(CC) $(CFLAGS) $(HEAD) -c $< -o $@
+$(OUTPUT):$(INPUT)
+	$(CC) $(HEAD) $(INPUT) $(MYLIB) -lfilter -o $(OUTPUT) $(LIB)
 
 clean:
-	rm *.o $(OUTPUT)
+	rm $(OUTPUT)
 

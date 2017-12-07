@@ -1,17 +1,18 @@
-.SUFFIXES:.o .c
-CC = gcc
+.SUFFIXES:.o .cpp
+CC = g++
 CFLAGS = -g -Wall
 OUTPUT = libfilter.a
-OBJFILE = brightness.o leftright.o updown.o grayscale.o leftrotate.o rightrotate.o
-
+OBJFILE = grayscale.o sharpening.o rotate.o sobel.o brightness.o
+LIB = `pkg-config opencv --cflags --libs`
 .PHONEY:clean
 
 $(OUTPUT):$(OBJFILE)
 	ar rv $(OUTPUT) $(OBJFILE)
+	mv $(OUTPUT) ../lib
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $@ $(LIB)
 
 clean:
-	rm *.o $(OUTPUT)
+	rm $(OBJFILE)
 
